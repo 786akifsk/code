@@ -1,0 +1,102 @@
+/*WAP in JAVA to implement the concept of Multilevel Inheritance*/
+import java.io.*;
+import java.util.*;
+
+class Bank{
+	int a;
+	String n;
+	void get(){
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter account holder name: ");
+		n=sc.nextLine();
+		System.out.println("Enter the account number: ");
+		a=sc.nextInt();
+	}
+	void display(){
+		System.out.println("Account Number: "+a+"Account Holder Name: "+n);
+	}
+}
+
+class SBA extends Bank{
+	int amt;
+	SBA(int x){
+		amt=x;
+	}
+	void deposit(){
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the amount to be deposited");
+		int p=sc.nextInt();
+		amt+=p;
+		disp();
+		System.out.println("Deposit amount is: "+p+"Balance: "+amt);
+	}
+	void withdraw(){
+		Scanner sc= new Scanner(System.in);
+		System.out.println("Enter the amount to be withdrawan");
+		int p=sc.nextInt();
+		if(amt>0 && p<=amt){
+			amt-=p;
+			if(amt<10000){
+				amt-=p;
+				System.out.println("Withdrawn: $"+p);
+				System.out.println("You have reached minimum balance");
+			}
+			else{
+				System.out.println("Withdrawn: $"+p);
+				
+			}
+		}
+		else{
+			System.out.println("Insufficient Balance");
+		}
+	}
+}
+
+class Loan extends SBA{
+	int l;
+	Loan(int a){
+		super(a);
+	}
+	void E_loan(){
+		if(amt>50000){
+			l=amt*2;
+			System.out.println("You are eligible for loan");
+			Scanner sc=new Scanner(System.in);
+			System.out.println("Enter years of loan.");
+			int y=c.nextInt();
+			int q=(l*10*y)/100;
+			l=l+q;
+			System.out.println("You have to give: "+l+"after"+y+" years");
+		}
+		else{
+			System.out.println("Not eligible");
+		}
+	}
+
+	void H_loan(){
+		if(amt>100000){
+			l=amt*4;
+			System.out.println("You are eligible for loan");
+			Scanner sc=new Scanner(System.in);
+			System.out.println("Enter years of loan.");
+			y=c.nextInt();
+			int q=(l*14*y)/100;
+			l=I+q;
+			System.out.println("You have to give: "+l+"after"+v+"years");
+		}
+		else{
+			System.out.println("Not eligible");
+		}
+	}
+}
+ class BankofIndia{
+public static void main(String args[]){
+Scanner sc= new scanner(System.in);
+Loan l= new Loan(10000);
+l.get();
+l.deposit();
+l.withdraw();
+l.E_loan();
+l.H_loan();
+}
+}
